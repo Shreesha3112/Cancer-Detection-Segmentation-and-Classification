@@ -39,6 +39,7 @@ The imbalance in data is used to avoid overfitting model to non cancer images, d
         Lower bound = (Lower hue,lower saturation,lower value)<br>
         Upper bound = (upper hue,upper saturation,upper value)
     * Detect object using range of lower and upper HSV bounds
+    <div style="text-align:center"><img src="https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/blob/main/hue_saturation_value.jpg" /></div>.
 * Apply Morphological transformation.
     * Operation:Opening - Erosion followed by dilation. Useful for removing noise
     * Erosion - It is useful for removing small white noises based on kernel size.It also shrinks the mask area.

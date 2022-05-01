@@ -169,31 +169,31 @@ Dice coffecient has disdavntages. It overstates the importance of sets with litt
 
 * Sample prediction after epoch 1
 
-<figure><img src="epoch1_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch1_save.png"></figure>
 
 * Sample prediction after epoch 3
 
-<figure><img src="epoch3_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch3_save.png"></figure>
 
 * Sample prediction after epoch 5
 
-<figure><img src="epoch5_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch5_save.png"></figure>
 
 * Sample prediction after epoch 10
 
-<figure><img src="epoch10_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch10_save.png"></figure>
 
 * Sample prediction after epoch 25
 
-<figure><img src="epoch25_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch25_save.png"></figure>
 
 * Sample prediction after epoch 50
 
-<figure><img src="epoch50_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch50_save.png"></figure>
 
 * Sample prediction after epoch 97
 
-<figure><img src="epoch97_save.png"></figure>
+<figure><img src="output%20after%20each%20epoch/epoch97_save.png"></figure>
 
 
 [Click to see complete sample predictions after each epoch](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/tree/main/output%20after%20each%20epoch)

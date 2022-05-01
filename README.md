@@ -1,8 +1,10 @@
-# Cancer cell segmentation and classification using microscopic blood samples
+## Cancer cell segmentation of microscopic images with automated labelling
 
-## Purpose: Deep dive on CNN Semantic segmentation and automated labelling using image processing
-If you face 'The notebook took too long to render' error while opening 'cancer_detection_segmentation_and_classification.ipynb' file, refer below link
-<b>[cancer_detection_segmentation_and_classification.ipynb](https://nbviewer.org/github/Shreesha3112/cancer-detection-and-segmentation/blob/main/cancer_detection_segmentation_and_classification.ipynb)</b>?
+### Purpose: Deep dive on CNN Semantic segmentation and automated labelling using image processing
+<br>
+<b>Note:</b> If you face 'The notebook took too long to render' error while opening 'cancer_detection_segmentation_and_classification.ipynb' file, refer
+
+##### [cancer_detection_segmentation_and_classification.ipynb](https://nbviewer.org/github/Shreesha3112/cancer-detection-and-segmentation/blob/main/cancer_detection_segmentation_and_classification.ipynb)
 
 ### Datatset Creation:
 
@@ -192,9 +194,11 @@ Dice coffecient has disdavntages. It overstates the importance of sets with litt
 * Sample prediction after epoch 97
 
 <figure><img src="epoch97_save.png"></figure>
-<br>
+
 
 [Click to see complete sample predictions after each epoch](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/tree/main/output%20after%20each%20epoch)
+
+---
 
 ##### Intermediate layer output of trained model
 
@@ -218,14 +222,18 @@ Dice coffecient has disdavntages. It overstates the importance of sets with litt
 
 * Final output
 <figure><img src="output%20after%20each%20layer/layer_40_conv2d_18.png"></figure>
-<br>
+
 [Click to see output of all layers](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/tree/main/output%20after%20each%20layer)
+
+---
 
 ### Performance
 
 <figure><img src="graphs/metrics%20over%20epochs.png"></figure>
 
 <figure><img src="graphs/metrics%20over%20losses.png"></figure>
+
+---
 
 ### Final predictions
 

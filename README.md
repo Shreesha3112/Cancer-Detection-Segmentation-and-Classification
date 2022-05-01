@@ -1,6 +1,8 @@
 # Cancer cell segmentation and classification using microscopic blood samples
 
 ## Purpose: Deep dive on CNN Semantic segmentation and automated labelling using image processing
+If you face 'The notebook took too long to render' error while opening 'cancer_detection_segmentation_and_classification.ipynb' file, refer below link
+<b>[cancer_detection_segmentation_and_classification.ipynb](https://nbviewer.org/github/Shreesha3112/cancer-detection-and-segmentation/blob/main/cancer_detection_segmentation_and_classification.ipynb)</b>?
 
 ### Datatset Creation:
 
@@ -155,14 +157,13 @@ Dice coeffecient penalises instnces of bad classification unlike Pixel accuracy
 <b>Note:</b><br> 
 Dice coffecient has disdavntages. It overstates the importance of sets with little-to-no actual ground truth positive sets. In the common example of image segmentation, if an image only has a single pixel of some detectable class, and the classifier detects that pixel and one other pixel, its F score is a lowly 2/3 and the IoU is even worse at 1/2. Trivial mistakes like these can seriously dominate the average score taken over a set of images. In short, it weights each pixel error inversely proportionally to the size of the selected/relevant set rather than treating them equally.
 <br><br>
-If you face issue with 'The notebook took too long to render' error while opening 'cancer_detection_segmentation_and_classification.ipynb' file, refer below link
 
 
 ---
 
 ### Training
 
-Segmentation ouput is tracked using keras callbacks throught the training
+##### Segmentation ouput is tracked using keras callbacks throught the training
 
 * Sample prediction after epoch 1
 
@@ -191,5 +192,45 @@ Segmentation ouput is tracked using keras callbacks throught the training
 * Sample prediction after epoch 97
 
 <figure><img src="epoch97_save.png"></figure>
+<br>
 
-[cancer_detection_segmentation_and_classification.ipynb](https://nbviewer.org/github/Shreesha3112/cancer-detection-and-segmentation/blob/main/cancer_detection_segmentation_and_classification.ipynb)
+[Click to see complete sample predictions after each epoch](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/tree/main/output%20after%20each%20epoch)
+
+##### Intermediate layer output of trained model
+
+* Input layer
+<figure><img src="output%20after%20each%20layer/layer_0_input_1.png"></figure>
+
+* Convolution layer
+<figure><img src="output%20after%20each%20layer/layer_9_conv2d_4.png"></figure>
+
+* Max pooling layer
+<figure><img src="output%20after%20each%20layer/layer_12_max_pooling2d_2.png"></figure>
+
+* Transpose convolution layer
+<figure><img src="output%20after%20each%20layer/layer_25_conv2d_transpose_1.png"></figure>
+
+* Concatenate
+<figure><img src="output%20after%20each%20layer/layer_31_concatenate_2.png"></figure>
+
+* Final convolution layer
+<figure><img src="output%20after%20each%20layer/layer_39_conv2d_17.png"></figure>
+
+* Final output
+<figure><img src="output%20after%20each%20layer/layer_40_conv2d_18.png"></figure>
+<br>
+[Click to see output of all layers](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/tree/main/output%20after%20each%20layer)
+
+### Performance
+
+<figure><img src="graphs/metrics%20over%20epochs.png"></figure>
+
+<figure><img src="graphs/metrics%20over%20losses.png"></figure>
+
+### Final predictions
+
+<figure><img src="predictions/cancer_final_predictions.png"></figure>
+
+<figure><img src="predictions/non_cancer_final_predictions.png"></figure>
+
+[Click to see all predictions](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/tree/main/predictions)

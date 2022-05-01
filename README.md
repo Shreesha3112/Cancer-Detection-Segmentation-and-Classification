@@ -1,6 +1,6 @@
 # Cancer cell segmentation and classification using microscopic blood samples
 
-## Purpose: Deep dive on CNN segmentation and automated labelling using image processing
+## Purpose: Deep dive on CNN Semantic segmentation and automated labelling using image processing
 
 ### Datatset Creation:
 
@@ -27,6 +27,8 @@ The imbalance in data is used to avoid overfitting model to non cancer images, d
 
 [Keras ImageDataGenerator](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator) is used to apply augmentation and generate dataset.
 
+---
+
 #### Automated Segmentation label generation using image processing
 
 ##### Automation steps
@@ -38,8 +40,9 @@ The imbalance in data is used to avoid overfitting model to non cancer images, d
     * Set the lower and upper bound of HSV. You can get the lower and upper bound using <b>[HSV tracker](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/blob/main/hsv_color_tracker.py)</b><br>
         Lower bound = (Lower hue,lower saturation,lower value)<br>
         Upper bound = (upper hue,upper saturation,upper value)
-    * Detect object using range of lower and upper HSV bounds
-    <div style="text-align:center"><img src="https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/blob/main/hue_saturation_value.jpg" /></div>.
+    * Detect object using range of lower and upper HSV bounds<br>
+    <br>
+    <div style="text-align:center"><img src="hue_saturation_value.jpg" /></div><br>
 * Apply Morphological transformation.
     * Operation:Opening - Erosion followed by dilation. Useful for removing noise
     * Erosion - It is useful for removing small white noises based on kernel size.It also shrinks the mask area.
@@ -48,12 +51,38 @@ The imbalance in data is used to avoid overfitting model to non cancer images, d
     * Binarization converts every pixel to white or black based on the given threshold. It also smoothens the edges
     * Otsu's method avoids having to choose a threshold value and determines it automatically
 
-### [U-net model](https://arxiv.org/abs/1505.04597)
+<br>
+<table border="none">
+  <tr>
+    <td>Cancer cell sample</td>
+     <td>Generated label</td>
+     <td>bitwise AND between original image and generated label</td>
+     <td>Show result on original image</td>
+  </tr>
+  <tr>
+    <td><img src="automated_labeling_samples/1_original_image.png" width=270 height=370></td>
+    <td><img src="automated_labeling_samples/2_generated_label.png" width=270 height=370></td>
+    <td><img src="automated_labeling_samples/3_bitwise%20and%20between%20original%20frame%20and%20mask%20created.png" width=270 height=370></td>
+     <td><img src="automated_labeling_samples/4_show%20result%20on%20original%20frame.png" width=270 height=370></td>
+  </tr>
+ </table>
+ 
+---
+
+### Modelling
+
+##### [U-net model](https://arxiv.org/abs/1505.04597)
+
+* U-net model was originally ivented and first used for biomedical image segmentation. Suitable for tasks like cancer segmentation
+* I am using modified version of U-net model by changing model hyperparameters such as activation function and kernel initializer 
+* Architecture is also modified to suit input of (128,128,3).
 
 ![U_net model architecture](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/u-net-architecture.png)
 
 
-### Model Hyper paramters
+---
+
+### Model Hyperparamters
 
 All Conv2D convolutional layers have following parameters:
 
@@ -73,23 +102,22 @@ All Conv2D convolutional layers have following parameters:
 
 * <b>stride = 1</b>. Filter movement set to 1 unit at a time.
 
----
+<br>
 
 All Conv2DTranspose layers have following parameters:
-<b>Transpose convolution layer</b> is combination of upsampling and convolution operation except instead of manual selection of upsampling technique(nearest-neighbour for example) layer itself will determine best way to perform upsampling.
+<b>Transpose convolution layer</b> is combination of upsampling and convolution operation except instead of manual selection of upsampling technique(nearest-neighbour for example), model itself will determine best way to perform upsampling.
 * <b>No activation applied</b>: Transpose convolution layers are used for reconstruction only in our model. Non linear activation applied in seperate convolutional layers.
 * <b>filter size : (2,2)</b>
 * <b>Stride = (2,2)</b>. Stride in transpose convolution behaves opposite to stride in convolution layer
 * <b>padding = same</b> 
+
+---
 
  ### Segmentation evaluation metrics
 
 Segmentation evaluation is done by matching each pixel of Ground truth mask to the predicted mask
 
 Usual Segmentation evaluation metrics are , Dice coeffecient , Intersection Over Union and pixel accuracy.
-
-
----
 
 
 Note:
@@ -100,9 +128,6 @@ Note:
 * FN = Number of pixels incorrectly identified as part of non - cancerous.
 
 
----
-
-
 
 **Pixel accuracy**: 
 ```
@@ -110,9 +135,6 @@ Pixel accuracy = (TP + TN) / (TP + TN + FP + FN)
 ```
 Pixel accuracy is highly biased evaluation for cancer detection. Accuracy could be more than 90% even if 0 cancer cells segmented.
 
-
-
----
 
 
 
@@ -129,9 +151,6 @@ Dice coeffecient penalises instnces of bad classification unlike Pixel accuracy
 
 
 
----
-
-
 
 <b>Note:</b><br> 
 Dice coffecient has disdavntages. It overstates the importance of sets with little-to-no actual ground truth positive sets. In the common example of image segmentation, if an image only has a single pixel of some detectable class, and the classifier detects that pixel and one other pixel, its F score is a lowly 2/3 and the IoU is even worse at 1/2. Trivial mistakes like these can seriously dominate the average score taken over a set of images. In short, it weights each pixel error inversely proportionally to the size of the selected/relevant set rather than treating them equally.
@@ -139,8 +158,14 @@ Dice coffecient has disdavntages. It overstates the importance of sets with litt
 If you face issue with 'The notebook took too long to render' error while opening 'cancer_detection_segmentation_and_classification.ipynb' file, refer below link
 
 
+---
+
 ### Training
 
+Segmentation ouput is tracked using keras callbacks throught the training
 
+* Sample prediction after epoch 1
+
+<div style="text-align:center"><img src="output%20after%20each%20epoch/epoch_0.png" height = 1000/></div><br>
 
 [cancer_detection_segmentation_and_classification.ipynb](https://nbviewer.org/github/Shreesha3112/cancer-detection-and-segmentation/blob/main/cancer_detection_segmentation_and_classification.ipynb)

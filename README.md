@@ -166,6 +166,30 @@ Segmentation ouput is tracked using keras callbacks throught the training
 
 * Sample prediction after epoch 1
 
-<div style="text-align:center"><img src="output%20after%20each%20epoch/epoch_0.png" height = 1000/></div><br>
+<figure><img src="epoch1_save.png"></figure>
+
+* Sample prediction after epoch 3
+
+<figure><img src="epoch3_save.png"></figure>
+
+* Sample prediction after epoch 5
+
+<figure><img src="epoch5_save.png"></figure>
+
+* Sample prediction after epoch 10
+
+<figure><img src="epoch10_save.png"></figure>
+
+* Sample prediction after epoch 25
+
+<figure><img src="epoch25_save.png"></figure>
+
+* Sample prediction after epoch 50
+
+<figure><img src="epoch50_save.png"></figure>
+
+* Sample prediction after epoch 97
+
+<figure><img src="epoch97_save.png"></figure>
 
 [cancer_detection_segmentation_and_classification.ipynb](https://nbviewer.org/github/Shreesha3112/cancer-detection-and-segmentation/blob/main/cancer_detection_segmentation_and_classification.ipynb)

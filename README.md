@@ -1,9 +1,51 @@
 # Cancer cell segmentation and classification using microscopic blood samples
 
-## Purpose: Deep dive on CNN segmentation
+## Purpose: Deep dive on CNN segmentation and automated labelling using image processing
 
-## Segmentation Model
+### Datatset Creation:
 
+#### [Original cancer and non cancer biomedical images](https://drive.google.com/drive/folders/1fDrSDqt6Khst6M25GXiI0E2P06-h8WgB?usp=sharing)
+
+<b>Data Augmentation</b><br>
+
+For Cancer images below augmentation applied:<br>
+* image rotation
+* Horizontal flip
+* Vertical flip
+* Shift image height
+* Shift image width
+* Zoom image
+* shear image - slant image by some angle clockwise or anti clockwise
+
+For non cancer images beow augmentation applied<br>
+
+* image rotation
+* Horizontal flip
+* Vertical flip
+
+The imbalance in data is used to avoid overfitting model to non cancer images, during segmentation<br>
+
+[Keras ImageDataGenerator](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator) is used to apply augmentation and generate dataset.
+
+#### Automated Segmentation label generation using image processing
+
+##### Automation steps
+
+* Apply GaussianBlur
+    * Gaussian blur smoothes uneven pixel values in an image by cutting out the extreme outliers
+* Detect a Cancer cell based on the range of pixel values in the HSV colorspace
+    * convert blurred frame from BGR(Blue,green,red) to HSV(Hue,Saturation,Value)
+    * Set the lower and upper bound of HSV. You can get the lower and upper bound using <b>[HSV tracker](https://github.com/Shreesha3112/Cancer-Detection-Segmentation-and-Classification/blob/main/hsv_color_tracker.py)</b><br>
+        Lower bound = (Lower hue,lower saturation,lower value)<br>
+        Upper bound = (upper hue,upper saturation,upper value)
+    * Detect object using range of lower and upper HSV bounds
+* Apply Morphological transformation.
+    * Operation:Opening - Erosion followed by dilation. Useful for removing noise
+    * Erosion - It is useful for removing small white noises based on kernel size.It also shrinks the mask area.
+    * Dilation - Increase area of the mask after erosion.
+* Apply Otsu's Binarization
+    * Binarization converts every pixel to white or black based on the given threshold. It also smoothens the edges
+    * Otsu's method avoids having to choose a threshold value and determines it automatically
 
 ### [U-net model](https://arxiv.org/abs/1505.04597)
 

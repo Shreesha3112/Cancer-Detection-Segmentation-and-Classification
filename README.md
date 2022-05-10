@@ -165,7 +165,7 @@ Dice coffecient has disdavntages. It overstates the importance of sets with litt
 
 ### Training
 
-##### Segmentation ouput is tracked using keras callbacks throught the training
+##### Segmentation ouput is tracked using keras callbacks throughout the training
 
 * Sample prediction after epoch 1
 

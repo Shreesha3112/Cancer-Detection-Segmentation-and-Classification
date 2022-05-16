@@ -1,4 +1,4 @@
-## Cancer cell segmentation of microscopic images with heuristic based weak supervision labelling
+## Cancer cell segmentation of microscopic images with heuristic based Automated labelling
 
 ### Purpose: Deep dive on CNN Semantic segmentation and automated labelling using image processing
 <br>

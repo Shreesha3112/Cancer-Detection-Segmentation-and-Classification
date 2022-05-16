@@ -1,4 +1,4 @@
-## Cancer cell segmentation of microscopic images with automated labelling
+## Cancer cell segmentation of microscopic images with heuristic based weak supervision labelling
 
 ### Purpose: Deep dive on CNN Semantic segmentation and automated labelling using image processing
 <br>
@@ -35,7 +35,7 @@ The imbalance in data is used to avoid overfitting model to non cancer images, d
 
 #### Automated Segmentation label generation using image processing
 
-##### Automation steps
+##### Heuristic algorithm steps
 
 * Apply GaussianBlur
     * Gaussian blur smoothes uneven pixel values in an image by cutting out the extreme outliers
